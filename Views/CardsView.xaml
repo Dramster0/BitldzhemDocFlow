@@ -1,0 +1,55 @@
+<UserControl x:Class="BitldzhemDocFlow.Views.CardsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             FontFamily="Segoe UI">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Заголовок страницы -->
+        <StackPanel Grid.Row="0" Margin="0,0,0,16">
+            <TextBlock Text="Технологические карты" Style="{StaticResource PageTitle}"/>
+            <TextBlock Text="Создание, согласование и утверждение карт"
+                       FontSize="26" Foreground="#FF8A8578"/>
+        </StackPanel>
+
+        <!-- Панель поиска и фильтра в карточке -->
+        <Border Grid.Row="1" Style="{StaticResource Card}" Margin="0,0,0,12">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Поиск" VerticalAlignment="Center"
+                           FontWeight="SemiBold" FontSize="22" Margin="4,0,8,0"/>
+                <TextBox x:Name="SearchBox" Width="240" TextChanged="Filter_Changed"/>
+                <TextBlock Text="Статус" VerticalAlignment="Center"
+                           FontWeight="SemiBold" FontSize="22" Margin="20,0,8,0"/>
+                <ComboBox x:Name="StatusFilter" Width="180" SelectionChanged="Filter_Changed"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Таблица карт -->
+        <DataGrid Grid.Row="2" x:Name="CardsGrid"
+                  SelectionChanged="CardsGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding CardId}" Width="50"/>
+                <DataGridTextColumn Header="Название карты" Binding="{Binding CardName}" Width="*"/>
+                <DataGridTextColumn Header="Продукция" Binding="{Binding ProductName}" Width="*"/>
+                <DataGridTextColumn Header="Статус" Binding="{Binding Status.StatusName}" Width="150"/>
+                <DataGridTextColumn Header="Автор" Binding="{Binding Author.FullName}" Width="140"/>
+                <DataGridTextColumn Header="Создана" Binding="{Binding CreatedDate, StringFormat=dd.MM.yyyy}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <!-- Кнопки действий -->
+        <WrapPanel Grid.Row="3" Margin="0,12,0,0">
+            <Button x:Name="NewBtn" Content="Создать" Click="New_Click" FontSize="22"/>
+            <Button x:Name="EditBtn" Content="Открыть" Style="{StaticResource SecondaryButton}" Click="Edit_Click" FontSize="22"/>
+            <Button x:Name="SendBtn" Content="На согласование" Style="{StaticResource SecondaryButton}" Click="Send_Click" FontSize="22"/>
+            <Button x:Name="ApproveBtn" Content="Утвердить" Click="Approve_Click" FontSize="22"/>
+            <Button x:Name="RejectBtn" Content="Вернуть на доработку" Style="{StaticResource SecondaryButton}" Click="Reject_Click" FontSize="22"/>
+            <Button x:Name="DeleteBtn" Content="Удалить" Style="{StaticResource SecondaryButton}" Click="Delete_Click" FontSize="22"/>
+        </WrapPanel>
+    </Grid>
+</UserControl>

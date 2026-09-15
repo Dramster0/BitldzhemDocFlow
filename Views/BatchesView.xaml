@@ -1,0 +1,28 @@
+<UserControl x:Class="BitldzhemDocFlow.Views.BatchesView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             FontFamily="Segoe UI">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Margin="0,0,0,16">
+            <TextBlock Text="Партии продукции" Style="{StaticResource PageTitle}"/>
+            <TextBlock Text="Регистрация выпущенных партий по утверждённым картам"
+                       FontSize="26" Foreground="#FF8A8578"/>
+        </StackPanel>
+        <DataGrid Grid.Row="1" x:Name="BatchesGrid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер партии" Binding="{Binding BatchNumber}" Width="*"/>
+                <DataGridTextColumn Header="Тех. карта" Binding="{Binding Card.CardName}" Width="*"/>
+                <DataGridTextColumn Header="Дата изготовления" Binding="{Binding ProductionDate, StringFormat=dd.MM.yyyy}" Width="160"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <WrapPanel Grid.Row="2" Margin="0,12,0,0">
+            <Button Content="Создать партию" Click="New_Click" FontSize="22"/>
+            <Button Content="Удалить" Style="{StaticResource SecondaryButton}" Click="Delete_Click" FontSize="22"/>
+        </WrapPanel>
+    </Grid>
+</UserControl>

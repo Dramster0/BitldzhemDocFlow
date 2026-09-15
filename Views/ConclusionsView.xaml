@@ -1,0 +1,53 @@
+<UserControl x:Class="BitldzhemDocFlow.Views.ConclusionsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             FontFamily="Segoe UI">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Margin="0,0,0,16">
+            <TextBlock Text="Заключения о соответствии" Style="{StaticResource PageTitle}"/>
+            <TextBlock Text="Оформление заключений по протоколам испытаний"
+                       FontSize="26" Foreground="#FF8A8578"/>
+        </StackPanel>
+        <TextBlock Grid.Row="1" Text="Протоколы без заключения" Style="{StaticResource SectionLabel}" FontSize="20"/>
+        <DataGrid Grid.Row="2" x:Name="TestsGrid" SelectionChanged="TestsGrid_SelectionChanged">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding TestId}" Width="50"/>
+                <DataGridTextColumn Header="Партия" Binding="{Binding Batch.BatchNumber}" Width="*"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding TestDate, StringFormat=dd.MM.yyyy}" Width="110"/>
+                <DataGridTextColumn Header="Результат" Binding="{Binding Result}" Width="2*"/>
+                <DataGridCheckBoxColumn Header="Соответствует" Binding="{Binding IsCompliant}" Width="120"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <DockPanel Grid.Row="3" Margin="0,12,0,6">
+            <Button DockPanel.Dock="Right" Content="Удалить заключение"
+                    Style="{StaticResource SecondaryButton}" Click="Delete_Click" FontSize="22"/>
+            <TextBlock Text="Оформленные заключения" Style="{StaticResource SectionLabel}"
+                       VerticalAlignment="Center" Margin="0" FontSize="20"/>
+        </DockPanel>
+        <DataGrid Grid.Row="4" x:Name="ConclusionsGrid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding ConclusionId}" Width="50"/>
+                <DataGridTextColumn Header="Протокол" Binding="{Binding TestId}" Width="90"/>
+                <DataGridTextColumn Header="Текст заключения" Binding="{Binding ConclusionText}" Width="*"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding ConclusionDate, StringFormat=dd.MM.yyyy}" Width="110"/>
+                <DataGridTextColumn Header="Специалист" Binding="{Binding QualitySpecialist.FullName}" Width="140"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Border Grid.Row="5" Style="{StaticResource Card}" Margin="0,12,0,0">
+            <StackPanel>
+                <TextBlock Text="Оформление заключения по выбранному протоколу" Style="{StaticResource SectionLabel}" FontSize="20"/>
+                <TextBox x:Name="ConclusionBox" Height="50" Margin="4"
+                         TextWrapping="Wrap" AcceptsReturn="True"/>
+                <Button Content="Сохранить заключение" HorizontalAlignment="Left" Click="Save_Click" FontSize="22"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</UserControl>

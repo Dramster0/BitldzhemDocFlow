@@ -1,0 +1,24 @@
+<UserControl x:Class="BitldzhemDocFlow.Views.ChangeLogView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             FontFamily="Segoe UI">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Margin="0,0,0,16">
+            <TextBlock Text="Журнал действий" Style="{StaticResource PageTitle}"/>
+            <TextBlock Text="Все операции пользователей в системе"
+                       FontSize="26" Foreground="#FF8A8578"/>
+        </StackPanel>
+        <DataGrid Grid.Row="1" x:Name="LogGrid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding LogId}" Width="60"/>
+                <DataGridTextColumn Header="Дата и время" Binding="{Binding ActionDate, StringFormat=dd.MM.yyyy HH:mm:ss}" Width="180"/>
+                <DataGridTextColumn Header="Пользователь" Binding="{Binding User.FullName}" Width="200"/>
+                <DataGridTextColumn Header="Действие" Binding="{Binding Action}" Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

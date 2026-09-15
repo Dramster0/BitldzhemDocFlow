@@ -1,0 +1,26 @@
+<Window x:Class="BitldzhemDocFlow.Views.CommentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Замечания по карте"
+        Height="240" Width="450"
+        WindowStartupLocation="CenterScreen" FontFamily="Segoe UI" Background="#FFF7F5F0"
+        ResizeMode="NoResize" FontSize="16">
+    <Grid Margin="14">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Укажите причину возврата на доработку:"
+                   Margin="0,0,0,6" FontSize="20"/>
+        <TextBox Grid.Row="1" x:Name="CommentBox"
+                 TextWrapping="Wrap" AcceptsReturn="True"
+                 VerticalScrollBarVisibility="Auto"/>
+        <StackPanel Grid.Row="2" Orientation="Horizontal"
+                    HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button Content="ОК" Width="90" Click="Ok_Click" FontSize="22"/>
+            <Button Content="Отмена" Width="135" Click="Cancel_Click" FontSize="22"/>
+        </StackPanel>
+    </Grid>
+</Window>

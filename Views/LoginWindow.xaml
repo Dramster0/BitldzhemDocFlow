@@ -1,0 +1,59 @@
+<Window x:Class="BitldzhemDocFlow.Views.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Вход в систему — ООО «Битлджем»"
+        Height="540" Width="900"
+        WindowStartupLocation="CenterScreen"
+        Icon="/app.ico"
+        ResizeMode="NoResize"
+        FontFamily="Segoe UI"
+        Background="#FFF7F5F0">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="320"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- Левая брендовая панель (графит + золото) -->
+        <Border Grid.Column="0" Background="#FF1A1A1A">
+            <StackPanel VerticalAlignment="Center" Margin="36,0">
+                <!-- Золотая монограмма -->
+                <Border Width="88" Height="88" CornerRadius="44"
+                        BorderBrush="#FFC0A062" BorderThickness="1.5"
+                        HorizontalAlignment="Left" Margin="0,0,0,28">
+                    <TextBlock Text="Б" FontSize="44" FontWeight="Light"
+                               Foreground="#FFC0A062"
+                               HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                </Border>
+                <TextBlock Text="БИТЛДЖЕМ" Foreground="#FFFFFFFF"
+                           FontSize="30" FontWeight="Light"/>
+                <Rectangle Height="1" Fill="#FFC0A062" Width="48"
+                           HorizontalAlignment="Left" Margin="0,14,0,14"/>
+                <TextBlock Text="Парфюмерно-косметическое&#x0a;производство"
+                           Foreground="#FF8A8578" FontSize="19" LineHeight="18"/>
+                <TextBlock Text="Система документооборота"
+                           Foreground="#FFC0A062" FontSize="19" Margin="0,18,0,0"/>
+            </StackPanel>
+        </Border>
+
+        <!-- Правая панель — форма входа -->
+        <StackPanel Grid.Column="1" VerticalAlignment="Center" Margin="48,0">
+            <TextBlock Text="Вход в систему" FontSize="30" FontWeight="Light"
+                       Foreground="#FF1A1A1A" Margin="0,0,0,4"/>
+            <TextBlock Text="Введите данные учётной записи" FontSize="26"
+                       Foreground="#FF8A8578" Margin="0,0,0,28"/>
+
+            <TextBlock Text="Логин" FontSize="22" FontWeight="SemiBold"
+                       Foreground="#FF2E2E2E" Margin="4,0,0,2"/>
+            <TextBox x:Name="LoginBox" FontSize="17"/>
+
+            <TextBlock Text="Пароль" FontSize="22" FontWeight="SemiBold"
+                       Foreground="#FF2E2E2E" Margin="4,14,0,2"/>
+            <PasswordBox x:Name="PasswordBox" FontSize="17"
+                         KeyDown="PasswordBox_KeyDown"/>
+
+            <Button Content="ВОЙТИ" Height="60" Margin="4,28,4,0"
+                    FontSize="26" Click="LoginButton_Click"/>
+        </StackPanel>
+    </Grid>
+</Window>

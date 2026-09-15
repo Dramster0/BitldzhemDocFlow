@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <RootNamespace>BitldzhemDocFlow</RootNamespace>
+    <AssemblyName>BitldzhemDocFlow</AssemblyName>
+    <ApplicationIcon>app.ico</ApplicationIcon>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Entity Framework Core + провайдер MS SQL Server -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.10" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10" />
+    <!-- Хеширование паролей -->
+    <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <!-- Экспорт отчётов в Excel -->
+    <PackageReference Include="ClosedXML" Version="0.104.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Иконка приложения как ресурс (для заголовка окон и панели задач) -->
+    <Resource Include="app.ico" />
+  </ItemGroup>
+
+</Project>

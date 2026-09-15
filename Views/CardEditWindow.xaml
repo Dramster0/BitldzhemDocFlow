@@ -1,0 +1,60 @@
+<Window x:Class="BitldzhemDocFlow.Views.CardEditWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Технологическая карта"
+        Height="600" Width="700"
+        WindowStartupLocation="CenterScreen" FontFamily="Segoe UI" Background="#FFF7F5F0">
+    <Grid Margin="14">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" x:Name="TitleText" Text="Новая технологическая карта"
+                   FontSize="26" FontWeight="Bold" Margin="0,0,0,10"/>
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBlock Text="Название карты:" Width="130" VerticalAlignment="Center"/>
+            <TextBox x:Name="CardNameBox" Width="500"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal">
+            <TextBlock Text="Продукция:" Width="130" VerticalAlignment="Center"/>
+            <TextBox x:Name="ProductNameBox" Width="500"/>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Orientation="Horizontal" Margin="0,4">
+            <TextBlock Text="Описание процесса:" Width="130" VerticalAlignment="Top"/>
+            <TextBox x:Name="ProcessBox" Width="500" Height="70"
+                     TextWrapping="Wrap" AcceptsReturn="True"
+                     VerticalScrollBarVisibility="Auto"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="4" Text="Состав (компоненты):"
+                   FontWeight="Bold" Margin="0,10,0,4"/>
+
+        <DataGrid Grid.Row="5" x:Name="ComponentsGrid" IsReadOnly="False"
+                  AutoGenerateColumns="False" CanUserAddRows="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Компонент" Binding="{Binding ComponentName}" Width="*"/>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Quantity}" Width="120"/>
+                <DataGridTextColumn Header="Ед. изм." Binding="{Binding Unit}" Width="100"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <TextBlock Grid.Row="6" x:Name="CommentText" Foreground="#C0392B"
+                   TextWrapping="Wrap" Margin="0,8,0,0" Visibility="Collapsed"/>
+
+        <StackPanel Grid.Row="7" Orientation="Horizontal"
+                    HorizontalAlignment="Right" Margin="0,10,0,0">
+            <Button Content="Сохранить" Width="165" Click="Save_Click" FontSize="22"/>
+            <Button Content="Отмена" Width="130" Click="Cancel_Click" FontSize="22"/>
+        </StackPanel>
+    </Grid>
+</Window>

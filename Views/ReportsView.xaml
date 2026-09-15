@@ -1,0 +1,29 @@
+<UserControl x:Class="BitldzhemDocFlow.Views.ReportsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             FontFamily="Segoe UI">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Margin="0,0,0,16">
+            <TextBlock Text="Отчёты" Style="{StaticResource PageTitle}"/>
+            <TextBlock Text="Формирование отчётов и экспорт в Excel"
+                       FontSize="26" Foreground="#FF8A8578"/>
+        </StackPanel>
+        <Border Grid.Row="1" Style="{StaticResource Card}" Margin="0,0,0,12">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Text="Тип отчёта" VerticalAlignment="Center"
+                           FontWeight="SemiBold" FontSize="22" Margin="4,0,8,0"/>
+                <ComboBox x:Name="ReportType" Width="300" SelectionChanged="ReportType_Changed">
+                    <ComboBoxItem Content="Отчёт по технологическим картам"/>
+                    <ComboBoxItem Content="Отчёт по лабораторным испытаниям"/>
+                </ComboBox>
+                <Button Content="Экспорт в Excel" Click="ExportExcel_Click" Margin="20,4,4,4" FontSize="22"/>
+            </StackPanel>
+        </Border>
+        <DataGrid Grid.Row="2" x:Name="ReportGrid" AutoGenerateColumns="True"/>
+    </Grid>
+</UserControl>

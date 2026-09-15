@@ -1,0 +1,59 @@
+<UserControl x:Class="BitldzhemDocFlow.Views.LabTestsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             FontFamily="Segoe UI">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Margin="0,0,0,16">
+            <TextBlock Text="Лабораторные испытания" Style="{StaticResource PageTitle}"/>
+            <TextBlock Text="Регистрация результатов анализа партий продукции"
+                       FontSize="26" Foreground="#FF8A8578"/>
+        </StackPanel>
+        <DataGrid Grid.Row="1" x:Name="TestsGrid">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="№" Binding="{Binding TestId}" Width="50"/>
+                <DataGridTextColumn Header="Партия" Binding="{Binding Batch.BatchNumber}" Width="*"/>
+                <DataGridTextColumn Header="Дата" Binding="{Binding TestDate, StringFormat=dd.MM.yyyy}" Width="110"/>
+                <DataGridTextColumn Header="Результат" Binding="{Binding Result}" Width="2*"/>
+                <DataGridCheckBoxColumn Header="Соответствует" Binding="{Binding IsCompliant}" Width="120"/>
+                <DataGridTextColumn Header="Лаборант" Binding="{Binding LabAssistant.FullName}" Width="140"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Border Grid.Row="2" Style="{StaticResource Card}" Margin="0,12,0,0">
+            <StackPanel>
+                <TextBlock Text="Регистрация нового испытания" Style="{StaticResource SectionLabel}" FontSize="22"/>
+                <StackPanel Orientation="Horizontal" Margin="0,2">
+                    <TextBlock Text="Партия" Width="90" VerticalAlignment="Center" FontSize="20"/>
+                    <ComboBox x:Name="BatchCombo" Width="280" DisplayMemberPath="BatchNumber"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,6">
+                    <TextBlock Text="Результат" Width="90" VerticalAlignment="Top" FontSize="20" RenderTransformOrigin="0.5,0.5">
+                        <TextBlock.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="-0.021"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </TextBlock.RenderTransform>
+                    </TextBlock>
+                    <TextBox x:Name="ResultBox" Width="440" Height="50"
+                             TextWrapping="Wrap" AcceptsReturn="True"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,2">
+                    <TextBlock Text="Соответствует норме" Width="197" VerticalAlignment="Center" FontSize="20"/>
+                    <CheckBox x:Name="CompliantCheck" IsChecked="True" VerticalAlignment="Center"/>
+                </StackPanel>
+            </StackPanel>
+        </Border>
+        <WrapPanel Grid.Row="3" Margin="0,12,0,0">
+            <Button Content="Сохранить протокол" Click="Save_Click" FontSize="22"/>
+            <Button Content="Удалить выбранный" Style="{StaticResource SecondaryButton}" Click="Delete_Click" FontSize="22"/>
+        </WrapPanel>
+    </Grid>
+</UserControl>
